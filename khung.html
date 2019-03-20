@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> March 21st </title>
-	
-	<style type="text/css">
-		*{
-			padding:0;
-			margin: 0;
-		}
-		button{
-			display: inline-block;
-		}
-	</style>
+  <title> March 21st </title>
+  
+  <style type="text/css">
+    *{
+      padding:0;
+      margin: 0;
+    }
+    button{
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
-	<script src="p5/p5.min.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript" charset="utf-8">
-			
-		
+  <script src="p5/p5.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+      
+    
 function setup() {
-  createCanvas(710, 400, WEBGL);
+  createCanvas(1300, 700, WEBGL);
 }
 
 function draw() {
-  background(0);
+  background(255,255,255);
 
   let locX = mouseX - height / 2;
   let locY = mouseY - width / 2;
@@ -31,34 +31,35 @@ function draw() {
   ambientLight(60, 60, 60);
   pointLight(255, 255, 255, locX, locY, 100);
 
+  orbitControl();
+
+  translate(-240, -100, 0);
+  push();
+  rotateZ(QUARTER_PI);
+  normalMaterial();
+  cone(50, 100, 64, 64);
+  pop();
+
+  translate(240, 0, 0 );
+  push();
+  rotateZ(QUARTER_PI);
+  normalMaterial();
+  cone(50, 100, 64, 64);
+  pop();
   
-
+  translate( 240, 0, 0);
   push();
-  translate(-200, -height / 14, 0);
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
+  rotateZ(QUARTER_PI);
   normalMaterial();
   cone(50, 100, 64, 64);
   pop();
 
-  push();
-  translate(0, -height / 14, 0);
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  normalMaterial();
-  cone(50, 100, 64, 64);
-  pop();
-	
-	push();
-  translate(200, -height / 14, 0);
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  normalMaterial();
-  cone(50, 100, 64, 64);
-  pop();  
+  // translate(-240 * 2, 200, 0);
+  // push();
+  // rotateZ(QUARTER_PI);
+  // normalMaterial();
+  // cone(50, 100, 64, 64);
+  // pop();
 }
 function mouseWheel(event) {
   //println(event.delta);
@@ -67,6 +68,6 @@ function mouseWheel(event) {
 }
 
 
-	</script>
+  </script>
 </body>
 </html>
